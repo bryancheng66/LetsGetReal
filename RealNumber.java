@@ -13,4 +13,12 @@ public class RealNumber {
 		return ""+getValue();
 	}
 
+	public boolean equals(RealNumber other){
+		if (this.value == 0){
+			return other.value == 0;
+		} else {
+			return Math.round(this.value * 100000) == Math.round(other.value * 100000);
+		}	
+	}
+
 }
