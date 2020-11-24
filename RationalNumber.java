@@ -18,4 +18,16 @@ public class RationalNumber extends RealNumber {
 	public double getValue(){
 		return (double)this.numerator / this.denominator;
 	}
+
+	public int getNumerator(){
+		return this.numerator;
+	}
+
+	public int getDenominator(){
+		return this.denominator;
+	}
+
+	public RationalNumber reciprocal(){
+		return new RationalNumber(this.denominator, this.numerator);
+	}
 }
