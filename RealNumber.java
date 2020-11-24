@@ -22,7 +22,10 @@ public class RealNumber {
 	}
 
 	public RealNumber add(RealNumber other){
-		return new RealNumber(this.value + other.getValue());
+		return new RealNumber(this.getValue() + other.getValue());
 	}
 
+	public RealNumber multiply(RealNumber other){
+		return new RealNumber(this.getValue() * other.getValue());
+	}
 }
