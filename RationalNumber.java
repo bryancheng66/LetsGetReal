@@ -9,7 +9,7 @@ public class RationalNumber extends RealNumber {
 		} else if (deno < 0) {
 			numerator = -1 * nume;
 			denominator = -1 * deno;
-		} else if (nume < 0) {
+		} else if (nume == 0) {
 			numerator = 0;
 			denominator = 1;			
 		} else {
@@ -73,14 +73,14 @@ public class RationalNumber extends RealNumber {
 	
 	public RationalNumber add(RationalNumber other){
 		return new RationalNumber(
-				numerator * other.getDenominator() + other.getDenominator() + numerator,
+				numerator * other.getDenominator() + other.getNumerator() * denominator,
 				denominator * other.getDenominator()
 		);
 	}
 	
 	public RationalNumber subtract(RationalNumber other){
 		return new RationalNumber(
-			numerator * other.getDenominator() - other.getDenominator() + numerator,
+				numerator * other.getDenominator() - other.getNumerator() * denominator,
 				denominator * other.getDenominator()
 		);
 	}
