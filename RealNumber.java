@@ -28,4 +28,8 @@ public class RealNumber {
 	public RealNumber multiply(RealNumber other){
 		return new RealNumber(this.getValue() * other.getValue());
 	}
+
+	public RealNumber divide(RealNumber other){
+		return new RealNumber(this.getValue() / other.getValue());
+	}
 }
