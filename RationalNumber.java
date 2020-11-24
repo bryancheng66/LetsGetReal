@@ -30,4 +30,8 @@ public class RationalNumber extends RealNumber {
 	public RationalNumber reciprocal(){
 		return new RationalNumber(this.denominator, this.numerator);
 	}
+
+	public boolean equals(RationalNumber other){
+		return this.getValue() == other.getValue();
+	}
 }
