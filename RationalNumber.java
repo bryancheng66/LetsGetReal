@@ -4,39 +4,40 @@ public class RationalNumber extends RealNumber {
 	public RationalNumber(int nume, int deno){
 		super(0.0);
 		if (deno == 0) {
-			this.numerator = 0;
-			this.denominator = 1;
+			numerator = 0;
+			denominator = 1;
 		} else if (deno < 0) {
-			this.numerator = -nume;
-			this.denominator = -deno;
+			numerator = -nume;
+			denominator = -deno;
 		} else {
-			this.numerator = nume;
-			this.denominator = deno;
+			numerator = nume;
+			denominator = deno;
 		}
+		reduce();
 	}
 
 	public double getValue(){
-		return (double)this.numerator / this.denominator;
+		return (double)numerator / denominator;
 	}
 
 	public int getNumerator(){
-		return this.numerator;
+		return numerator;
 	}
 
 	public int getDenominator(){
-		return this.denominator;
+		return denominator;
 	}
 
 	public RationalNumber reciprocal(){
-		return new RationalNumber(this.denominator, this.numerator);
+		return new RationalNumber(denominator, numerator);
 	}
 
 	public boolean equals(RationalNumber other){
-		return this.getValue() == other.getValue();
+		return getValue() == other.getValue();
 	}
 
 	public String toString(){
-		return this.getNumerator() + "/" + this.getDenominator();
+		return getNumerator() + "/" + getDenominator();
 	}
 
 	private static int gcd(int a, int b){
@@ -49,5 +50,12 @@ public class RationalNumber extends RealNumber {
 			dividend = divisor;
 		}
 		return divisor;
+	}
+
+	private void reduce() {
+		int newNum = numerator / gcd(numerator, denominator);
+		int newDen = denominator / gcd(numerator, denominator);
+		numerator = newNum;
+		denominator = newDen;
 	}
 }
