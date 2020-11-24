@@ -7,8 +7,11 @@ public class RationalNumber extends RealNumber {
 			numerator = 0;
 			denominator = 1;
 		} else if (deno < 0) {
-			numerator = -nume;
-			denominator = -deno;
+			numerator = -1 * nume;
+			denominator = -1 * deno;
+		} else if (nume < 0) {
+			numerator = 0;
+			denominator = 1;			
 		} else {
 			numerator = nume;
 			denominator = deno;
@@ -53,9 +56,32 @@ public class RationalNumber extends RealNumber {
 	}
 
 	private void reduce() {
-		int newNum = numerator / gcd(numerator, denominator);
-		int newDen = denominator / gcd(numerator, denominator);
+		int gcdivisor = gcd(Math.abs(numerator), Math.abs(denominator));
+		int newNum = numerator / (gcdivisor == 0 ? 1 : gcdivisor);
+		int newDen = denominator / (gcdivisor == 0 ? 1 : gcdivisor); 
 		numerator = newNum;
 		denominator = newDen;
+	}
+
+	public RationalNumber multiply(RationalNumber other){
+		return new RationalNumber(numerator * other.getNumerator(), denominator * other.getDenominator());		
+	}
+
+	public RationalNumber divide(RationalNumber other){
+		return new RationalNumber(numerator * other.getDenominator(), denominator * other.getNumerator());		
+	}
+	
+	public RationalNumber add(RationalNumber other){
+		return new RationalNumber(
+				numerator * other.getDenominator() + other.getDenominator() + numerator,
+				denominator * other.getDenominator()
+		);
+	}
+	
+	public RationalNumber subtract(RationalNumber other){
+		return new RationalNumber(
+			numerator * other.getDenominator() - other.getDenominator() + numerator,
+				denominator * other.getDenominator()
+		);
 	}
 }
