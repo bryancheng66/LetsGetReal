@@ -14,11 +14,15 @@ public class RealNumber {
 	}
 
 	public boolean equals(RealNumber other){
-		if (this.value == 0){
-			return other.value == 0;
+		if (this.getValue() == 0){
+			return other.getValue() == 0;
 		} else {
-			return Math.round(this.value * 100000) == Math.round(other.value * 100000);
+			return Math.round(this.getValue() * 100000) == Math.round(other.getValue() * 100000);
 		}	
+	}
+
+	public RealNumber add(RealNumber other){
+		return new RealNumber(this.value + other.getValue());
 	}
 
 }
