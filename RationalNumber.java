@@ -19,11 +19,11 @@ public class RationalNumber extends Number{
 	}
 
 	public double getValue(){
-		return (double)numerator / denominator;
+		return numerator / (double)denominator;
 	}
 
-	public double equals(RationalNumber other){
-		return getNumerator == other.getNumerator() && getDenominator == other.getDenominator() 
+	public boolean equals(RationalNumber other){
+		return getNumerator() == other.getNumerator() && getDenominator() == other.getDenominator(); 
 	}
 
 	public int getNumerator(){
@@ -42,14 +42,14 @@ public class RationalNumber extends Number{
 		if (getNumerator() == 0){
 			return "0";
 		} else if (getDenominator() == 1){
-			return getNumerator();
+			return getNumerator() + "";
 		} else {
 			return getNumerator() + "/" + getDenominator();
 		}
 	}
 
 	private static int gcd(int a, int b){
-		int remainder = b < a ? b : a;;
+		int remainder = a > b ? b : a;;
 		int dividend = a > b ? a : b;
 		int divisor = 0;
 		while (remainder != 0){
@@ -62,10 +62,8 @@ public class RationalNumber extends Number{
 
 	private void reduce() {
 		int gcdivisor = gcd(Math.abs(numerator), Math.abs(denominator));
-		int newNum = numerator / (gcdivisor == 0 ? 1 : gcdivisor);
-		int newDen = denominator / (gcdivisor == 0 ? 1 : gcdivisor); 
-		numerator = newNum;
-		denominator = newDen;
+		numerator =  numerator / (gcdivisor == 0 ? 1 : gcdivisor);
+		denominator = denominator / (gcdivisor == 0 ? 1 : gcdivisor); 
 	}
 
 	public RationalNumber multiply(RationalNumber other){
@@ -85,8 +83,8 @@ public class RationalNumber extends Number{
 	
 	public RationalNumber subtract(RationalNumber other){
 		return new RationalNumber(
-				numerator * other.getDenominator() - other.getNumerator() * denominator,
-				denominator * other.getDenominator()
+			numerator * other.getDenominator() - other.getNumerator() * denominator,
+			denominator * other.getDenominator()
 		);
 	}
 }

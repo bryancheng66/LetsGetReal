@@ -1,7 +1,7 @@
 public abstract class Number{
 	public abstract double getValue();
 
-	public boolean equals(RealNumber other){
+	public boolean equals(Number other){
 		if (getValue() == 0){
 			return other.getValue() == 0;
 		} else if (other.getValue() == 0) {
