@@ -39,7 +39,13 @@ public class RationalNumber extends Number{
 	}
 
 	public String toString(){
-		return getNumerator() + "/" + getDenominator();
+		if (getNumerator() == 0){
+			return "0";
+		} else if (getDenominator() == 1){
+			return getNumerator();
+		} else {
+			return getNumerator() + "/" + getDenominator();
+		}
 	}
 
 	private static int gcd(int a, int b){
