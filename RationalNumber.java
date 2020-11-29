@@ -1,4 +1,4 @@
-public class RationalNumber extends RealNumber {
+public class RationalNumber extends Number{
 	private int numerator, denominator;
 	
 	public RationalNumber(int nume, int deno){
@@ -33,10 +33,6 @@ public class RationalNumber extends RealNumber {
 
 	public RationalNumber reciprocal(){
 		return new RationalNumber(denominator, numerator);
-	}
-
-	public boolean equals(RationalNumber other){
-		return getValue() == other.getValue();
 	}
 
 	public String toString(){
